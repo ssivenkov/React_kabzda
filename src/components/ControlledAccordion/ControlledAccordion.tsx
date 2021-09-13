@@ -1,9 +1,15 @@
 import React from "react";
 
+type itemType = {
+    title: string
+    value: any
+}
+
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
     onClick: (collapsed: boolean) => void
+    items: itemType[]
 }
 
 export function ControlledAccordion(props: AccordionPropsType) {
@@ -12,7 +18,7 @@ export function ControlledAccordion(props: AccordionPropsType) {
             <AccordionTitle title={props.titleValue}
                             onClick={ () => {props.onClick(!props.collapsed)} }
             />
-            {!props.collapsed && <AccordionBody/>}
+            {!props.collapsed && <AccordionBody items={props.items}/>}
             {/* это условный рендеринг. Понятнее:
             props.collapsed === false && <AccordionBody/> */}
         </div>
@@ -32,14 +38,14 @@ function AccordionTitle(props: AccordionTitlePropsType) {
     )
 }
 
-function AccordionBody() {
+type AccordionBodyPropsType = {
+    items: itemType[]
+}
+
+function AccordionBody(props: AccordionBodyPropsType) {
     return (
-        <div>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
-        </div>
+        <ul>
+            {props.items.map((item, index) => <li key={index}>{item.title}</li>)}
+        </ul>
     )
 }
