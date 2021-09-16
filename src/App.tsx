@@ -44,14 +44,6 @@ function App() {
             <br/>
             <p>Uncontrolled rating</p>
             <UncontrolledRaiting/>
-            <p>Uncontrolled input</p>
-            <UncontrolledInput/>
-            <p>Uncontrolled input with ref</p>
-            <GetValueOfUncontrolledInputByButtonPress/>
-            <p>Controlled input</p>
-            <ControlledInput/>
-            <p>Controlled checkbox</p>
-            <ControlledCheckbox/>
             <p>Controlled select</p>
             <ControlledSelect/>
             <p>Custom select</p>
@@ -63,6 +55,14 @@ function App() {
                               {title: "Valera", value: 2},
                               {title: "Artem", value: 3}
                           ]}/>
+            <p>Uncontrolled input</p>
+            <UncontrolledInput/>
+            <p>Uncontrolled input with ref</p>
+            <GetValueOfUncontrolledInputByButtonPress/>
+            <p>Controlled input</p>
+            <ControlledInput/>
+            <p>Controlled checkbox</p>
+            <ControlledCheckbox/>
         </div>
     );
 }

@@ -6,31 +6,54 @@
 
 .select {
     display: inline-block;
+    outline: none;
     border: 1px solid #000;
     border-radius: 5px;
     padding: 3px;
     cursor: pointer;
+    user-select: none;
+    background: linear-gradient(#f5f5f5, #ddd);
+}
+
+.select:focus {
+    border: 1px solid #2963b3;
 }
 
 .select:after {
     content: "▼";
     display: inline;
-    font-size: 12px;
-    margin-left: 5px;
+    font-size: 10px;
+    margin: 0 5px;
+    user-select: none;
+}
+
+.positionContainer {
+    position: relative;
 }
 
 .optionContainer {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    position: relative;
-    left: 0;
+    position: absolute;
+    border: 1px solid #999;
     background: linear-gradient(#f5f5f5, #ccc);
-    padding: 10px;
-    border-radius: 0 15px 15px 15px;
+    box-shadow: 0 5px 7px 0 rgba(50, 50, 50, 0.6);
 }
 
 .option {
     display: block;
     cursor: pointer;
+    padding: 2px 8px;
+    user-select: none;
+}
+
+.option:hover {
+    color: #fff;
+    background: linear-gradient(#64d3ff, #255aa3);
+}
+
+.option.selected {
+    color: #fff;
+    background: linear-gradient(#64d3ff, #255aa3);
 }
