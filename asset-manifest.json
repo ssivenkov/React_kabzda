@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/React_kabzda/static/css/main.6fed7372.chunk.css",
-    "main.js": "/React_kabzda/static/js/main.c78c65ba.chunk.js",
-    "main.js.map": "/React_kabzda/static/js/main.c78c65ba.chunk.js.map",
+    "main.css": "/React_kabzda/static/css/main.c1049773.chunk.css",
+    "main.js": "/React_kabzda/static/js/main.6aab52b5.chunk.js",
+    "main.js.map": "/React_kabzda/static/js/main.6aab52b5.chunk.js.map",
     "runtime-main.js": "/React_kabzda/static/js/runtime-main.a93601d8.js",
     "runtime-main.js.map": "/React_kabzda/static/js/runtime-main.a93601d8.js.map",
     "static/js/2.78dcbbfc.chunk.js": "/React_kabzda/static/js/2.78dcbbfc.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.f29135fd.chunk.js": "/React_kabzda/static/js/3.f29135fd.chunk.js",
     "static/js/3.f29135fd.chunk.js.map": "/React_kabzda/static/js/3.f29135fd.chunk.js.map",
     "index.html": "/React_kabzda/index.html",
-    "static/css/main.6fed7372.chunk.css.map": "/React_kabzda/static/css/main.6fed7372.chunk.css.map",
+    "static/css/main.c1049773.chunk.css.map": "/React_kabzda/static/css/main.c1049773.chunk.css.map",
     "static/js/2.78dcbbfc.chunk.js.LICENSE.txt": "/React_kabzda/static/js/2.78dcbbfc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a93601d8.js",
     "static/js/2.78dcbbfc.chunk.js",
-    "static/css/main.6fed7372.chunk.css",
-    "static/js/main.c78c65ba.chunk.js"
+    "static/css/main.c1049773.chunk.css",
+    "static/js/main.6aab52b5.chunk.js"
   ]
 }
