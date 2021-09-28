@@ -1,4 +1,5 @@
 import React from "react";
+import s from './ControlledAccordion.module.css'
 
 type itemType = {
     title: string
@@ -12,15 +13,15 @@ type AccordionPropsType = {
     items: itemType[]
 }
 
-export function ControlledAccordion(props: AccordionPropsType) {
+export function ControlledAccordionComponent(props: AccordionPropsType) {
     return (
-        <div>
+        <div className={s.container}>
             <AccordionTitle title={props.titleValue}
                             onClick={ () => {props.onClick(!props.collapsed)} }
             />
             {!props.collapsed && <AccordionBody items={props.items}/>}
             {/* это условный рендеринг. Понятнее:
-            props.collapsed === false && <AccordionBody/> */}
+            если props.collapsed === false тогда отрисуй <AccordionBody/> */}
         </div>
     )
 }
@@ -33,7 +34,9 @@ type AccordionTitlePropsType = {
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <div>
-            <h3 onClick={ () => {props.onClick()} }>{props.title}</h3>
+            <span className={s.title} onClick={ () => {props.onClick()} }>
+                {props.title}
+            </span>
         </div>
     )
 }

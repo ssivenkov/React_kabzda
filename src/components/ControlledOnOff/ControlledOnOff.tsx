@@ -1,13 +1,18 @@
 import React from "react";
 
-type UncontrolledOnOffType = {
+type ControlledOnOffType = {
     on: boolean
     onChange: (on: boolean) => void
 }
 
-export function ControlledOnOff(props: UncontrolledOnOffType) {
+export function ControlledOnOffComponent(props: ControlledOnOffType) {
     const containerStyle = {
-        display: "flex"
+        display: "inline-Block",
+        padding: "10px",
+        border: "1px solid green",
+    }
+    const contentContainerStyle = {
+        display: "flex",
     }
     const onStyle = {
         cursor: "pointer",
@@ -32,9 +37,12 @@ export function ControlledOnOff(props: UncontrolledOnOffType) {
 
     return (
         <div style={containerStyle}>
-            <div style={onStyle} onClick={ ()=>{props.onChange(true)} }>On</div>
-            <div style={offStyle} onClick={ ()=>{props.onChange(false)} }>Off</div>
-            <div style={indicatorStyle}> </div>
+            <span>Uncontrolled switch</span>
+            <div style={contentContainerStyle}>
+                <div style={onStyle} onClick={ ()=>{props.onChange(true)} }>On</div>
+                <div style={offStyle} onClick={ ()=>{props.onChange(false)} }>Off</div>
+                <div style={indicatorStyle}> </div>
+            </div>
         </div>
     )
 }

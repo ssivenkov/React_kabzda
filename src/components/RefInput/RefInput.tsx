@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
+import s from './RefInput.module.css';
 
-export const GetValueOfUncontrolledInputByButtonPress = () => {
+export const RefInputComponent = () => {
     const [value, setValue] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -9,8 +10,10 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
         setValue(element.value);
     }
 
-    return <>
+    return <div className={s.container}>
+        <div>Uncontrolled input with ref</div>
         <input ref={inputRef}/>
-        <button onClick={saveValue}>save</button> - actual value: {value}
-    </>
+        <button onClick={saveValue}>save</button>
+        <div>actual value: {value}</div>
+    </div>
 }

@@ -12,7 +12,7 @@ type SelectPropsType = {
     items: itemType[]
 }
 
-export let CustomSelect: React.FC<SelectPropsType> = (
+export let CustomSelectComponent: React.FC<SelectPropsType> = (
     {
         value,
         onChange,
@@ -63,6 +63,7 @@ export let CustomSelect: React.FC<SelectPropsType> = (
 
     return (
         <div className={s.container}>
+            <div>Custom select</div>
             <div onClick={collapsedAction}
                  className={s.select}
                  onKeyUp={onKeyUpCallback}
@@ -114,13 +115,13 @@ let CustomSelectOptions: React.FC<CustomSelectOptionsType> = (
     return <div className={s.positionContainer}>
         <div className={s.optionContainer}>
             {items.map((item, index) =>
-                <div key={index}
-                     onMouseEnter={() => setHoveredItemTitle(item.title)}
-                     onClick={() => clickItem(item.title)}
-                     className={` ${s.option} ${item === hoveredElement ? s.selected : ""} `}
-                >
-                    {item.title}
-                </div>)
+              <div key={index}
+                   onMouseEnter={() => setHoveredItemTitle(item.title)}
+                   onClick={() => clickItem(item.title)}
+                   className={` ${s.option} ${item === hoveredElement ? s.selected : ""} `}
+              >
+                  {item.title}
+              </div>)
             }
         </div>
     </div>

@@ -1,16 +1,19 @@
-import React, {useState} from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_COLLAPSED} from "./Reducer";
+import s from './UncontrolledAccordion.module.css'
 
 type AccordionPropsType = {
     titleValue: string
 }
 
-export function UncontrolledAccordion(props: AccordionPropsType) {
-    let [collapsed, setCollapsed] = useState(true);
+export function UncontrolledAccordionComponent(props: AccordionPropsType) {
+    let [state, dispatch] = useReducer(reducer, {collapsed: false});
     return (
-        <div>
+        <div className={s.container}>
             <AccordionTitle title={props.titleValue}
-            onClick={ () => {setCollapsed(!collapsed)} }/>
-            {!collapsed && <AccordionBody/>}
+            onClick={ () => {
+                dispatch({type: TOGGLE_COLLAPSED})} }/>
+            {!state.collapsed && <AccordionBody/>}
             {/* это условный рендеринг. Понятнее:
             collapsed === false && <AccordionBody/> */}
         </div>
@@ -25,7 +28,7 @@ type AccordionTitlePropsType = {
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <div>
-            <h3 onClick={ () => {props.onClick()} }>{props.title}</h3>
+            <span className={s.title} onClick={ () => {props.onClick()} }>{props.title}</span>
         </div>
     )
 }

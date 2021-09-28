@@ -1,78 +1,85 @@
-import React, {useState} from 'react';
-import './App.css';
-import {ControlledAccordion} from "./components/ControlledAccordion/ControlledAccordion";
-import {ControlledRaiting, RaitingValueType} from "./components/ControlledRaiting/ControlledRaiting";
-import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
-import {UncontrolledRaiting} from "./components/UncontrolledRaiting/UncontrolledRaiting";
-import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
-import {ControlledOnOff} from "./components/ControlledOnOff/ControlledOnOff";
-import {UncontrolledInput} from "./components/UncontrolledInput/UncontrolledInput";
-import {GetValueOfUncontrolledInputByButtonPress} from "./components/RefInput/RefInput";
-import {ControlledInput} from "./components/ControlledInput/ControlledInput";
-import {ControlledCheckbox} from "./components/ControlledCheckbox/ControlledCheckbox";
-import {ControlledSelect} from "./components/ControlledSelect/ControlledSelect";
-import {CustomSelect} from "./components/CustomSelect/CustomSelect";
+import React, { useState } from "react";
+import "./App.css";
+import { ControlledAccordionComponent } from "./components/ControlledAccordion/ControlledAccordion";
+import { UncontrolledOnOffComponent } from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import { ControlledOnOffComponent } from "./components/ControlledOnOff/ControlledOnOff";
+import { UncontrolledAccordionComponent } from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import { ControlledRatingComponent, RaitingValueType } from "./components/ControlledRaiting/ControlledRaiting";
+import { UncontrolledRatingComponent } from "./components/UncontrolledRaiting/UncontrolledRaiting";
+import { CustomSelectComponent } from "./components/CustomSelect/CustomSelect";
+import { RefInputComponent } from "./components/RefInput/RefInput";
+import { ControlledInputComponent } from "./components/ControlledInput/ControlledInput";
+import { ControlledCheckboxComponent } from "./components/ControlledCheckbox/ControlledCheckbox";
+import { ControlledSelectComponent } from "./components/ControlledSelect/ControlledSelect";
+import { UncontrolledInputComponent } from "./components/UncontrolledInput/UncontrolledInput";
+import { ReactMemo } from "./components/ReactMemo/ReactMemo";
+import { UseMemo } from "./components/UseMemo/UseMemo";
+import { UseMemoHelpReactMemo } from "./components/UseMemoHelpReactMemo/UseMemoHelpReactMemo";
 
 function App() {
-    let [ratingValue, setRatingValue] = useState<RaitingValueType>(0)
-    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
-    let [switchOn, setSwitchOn] = useState<boolean>(false)
-    let [customSelectValue, setCustomSelectValue] = useState<string>('none')
-
-    return (
-        <div>
-            <PageTitle title={"This is APP component"}/>
-            <p>Controlled switch</p>
-            <UncontrolledOnOff/>
-            <p>Uncontrolled switch</p>
-            <ControlledOnOff on={switchOn}
-                             onChange={(on) => setSwitchOn(on)}/>
-            <ControlledAccordion titleValue={"controlled accordion"}
-                                 collapsed={accordionCollapsed}
-                                 onClick={setAccordionCollapsed}
-                                 items={[
-                                     {title: "Dimych", value: 1},
-                                     {title: "Valera", value: 2},
-                                     {title: "Artem", value: 3}
-                                 ]}
-            />
-            <UncontrolledAccordion titleValue={"uncontrolled accordion"}/>
-            <br/>
-            <p>Controlled rating</p>
-            <ControlledRaiting value={ratingValue}
-                               onClick={setRatingValue}/>
-            <br/>
-            <p>Uncontrolled rating</p>
-            <UncontrolledRaiting/>
-            <p>Controlled select</p>
-            <ControlledSelect/>
-            <p>Custom select</p>
-            <CustomSelect value={customSelectValue}
-                          onChange={setCustomSelectValue}
-                          items={[
-                              {title: "none", value: 0},
-                              {title: "Dimych", value: 1},
-                              {title: "Valera", value: 2},
-                              {title: "Artem", value: 3}
-                          ]}/>
-            <p>Uncontrolled input</p>
-            <UncontrolledInput/>
-            <p>Uncontrolled input with ref</p>
-            <GetValueOfUncontrolledInputByButtonPress/>
-            <p>Controlled input</p>
-            <ControlledInput/>
-            <p>Controlled checkbox</p>
-            <ControlledCheckbox/>
-        </div>
-    );
-}
-
-type PageTitlePropsType = {
+  type PageTitlePropsType = {
     title: string
-}
+  }
 
-function PageTitle(props: PageTitlePropsType) {
+  function PageTitle(props: PageTitlePropsType) {
     return <h3>{props.title}</h3>
+  }
+
+  let [ratingValue, setRatingValue] = useState<RaitingValueType>(0);
+  let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false);
+  let [switchOn, setSwitchOn] = useState<boolean>(false);
+  let [customSelectValue, setCustomSelectValue] = useState<string>("none");
+
+  const UncontrolledOnOff = React.memo(UncontrolledOnOffComponent);
+  const ControlledOnOff = React.memo(ControlledOnOffComponent);
+  const ControlledAccordion = React.memo(ControlledAccordionComponent);
+  const UncontrolledAccordion = React.memo(UncontrolledAccordionComponent);
+  const ControlledRating = React.memo(ControlledRatingComponent);
+  const UncontrolledRating = React.memo(UncontrolledRatingComponent);
+  const ControlledSelect = React.memo(ControlledSelectComponent);
+  const CustomSelect = React.memo(CustomSelectComponent);
+  const UncontrolledInput = React.memo(UncontrolledInputComponent);
+  const RefInput = React.memo(RefInputComponent);
+  const ControlledInput = React.memo(ControlledInputComponent);
+  const ControlledCheckbox = React.memo(ControlledCheckboxComponent);
+
+  return <>
+    <PageTitle title={"This is APP components:"}/>
+    <div className="container">
+      <UncontrolledOnOff/>
+      <ControlledOnOff on={switchOn}
+                       onChange={(on) => setSwitchOn(on)}/>
+      <ControlledAccordion titleValue={"Controlled accordion"}
+                           collapsed={accordionCollapsed}
+                           onClick={setAccordionCollapsed}
+                           items={[
+                             {title: "Dimych", value: 1},
+                             {title: "Valera", value: 2},
+                             {title: "Artem", value: 3},
+                           ]}
+      />
+      <UncontrolledAccordion titleValue={"Uncontrolled accordion"}/>
+      <ControlledRating value={ratingValue}
+                        onClick={setRatingValue}/>
+      <UncontrolledRating/>
+      <ControlledSelect/>
+      <CustomSelect value={customSelectValue}
+                    onChange={setCustomSelectValue}
+                    items={[
+                      {title: "none", value: 0},
+                      {title: "Dimych", value: 1},
+                      {title: "Valera", value: 2},
+                      {title: "Artem", value: 3},
+                    ]}/>
+      <ControlledInput/>
+      <UncontrolledInput/>
+      <RefInput/>
+      <ControlledCheckbox/>
+      <ReactMemo/>
+      <UseMemo/>
+      <UseMemoHelpReactMemo/>
+    </div>
+  </>
 }
 
 export default App;

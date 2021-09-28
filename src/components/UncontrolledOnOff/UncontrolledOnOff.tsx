@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import s from './UncontrolledOnOff.module.css'
 
-export function UncontrolledOnOff() {
+export function UncontrolledOnOffComponent() {
     let [on, setOn] = useState(false);
 
     const containerStyle = {
@@ -28,10 +29,13 @@ export function UncontrolledOnOff() {
     };
 
     return (
-        <div style={containerStyle}>
-            <div style={onStyle} onClick={ () => {setOn(true)} }>On</div>
-            <div style={offStyle} onClick={ () => {setOn(false)} }>Off</div>
-            <div style={indicatorStyle}> </div>
-        </div>
+      <div className={s.container}>
+          <span>Controlled switch</span>
+          <div style={containerStyle}>
+              <div style={onStyle} onClick={ () => {setOn(true)} }>On</div>
+              <div style={offStyle} onClick={ () => {setOn(false)} }>Off</div>
+              <div style={indicatorStyle}> </div>
+          </div>
+      </div>
     )
 }

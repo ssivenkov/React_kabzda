@@ -1,13 +1,17 @@
 import React, {ChangeEvent, useState} from 'react';
+import s from './ControlledInput.module.css'
 
-export const ControlledInput = () => {
+export const ControlledInputComponent = () => {
     const [value, setValue] = useState('');
 
     const changeFunc = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
     }
 
-    return <input value={value}
-                  onChange={changeFunc}
-    />
+    return <div className={s.container}>
+        <div>Controlled input</div>
+        <input value={value}
+               onChange={changeFunc}
+        />
+    </div>
 }
