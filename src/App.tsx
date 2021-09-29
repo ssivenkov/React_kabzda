@@ -15,6 +15,7 @@ import { UncontrolledInputComponent } from "./components/UncontrolledInput/Uncon
 import { ReactMemo } from "./components/ReactMemo/ReactMemo";
 import { UseMemo } from "./components/UseMemo/UseMemo";
 import { UseMemoHelpReactMemo } from "./components/UseMemoHelpReactMemo/UseMemoHelpReactMemo";
+import { UseCallback } from "./components/UseCallback/UseCallback";
 
 function App() {
   type PageTitlePropsType = {
@@ -78,6 +79,7 @@ function App() {
       <ReactMemo/>
       <UseMemo/>
       <UseMemoHelpReactMemo/>
+      <UseCallback/>
     </div>
   </>
 }
