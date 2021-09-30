@@ -16,6 +16,10 @@ import { ReactMemo } from "./components/ReactMemo/ReactMemo";
 import { UseMemo } from "./components/UseMemo/UseMemo";
 import { UseMemoHelpReactMemo } from "./components/UseMemoHelpReactMemo/UseMemoHelpReactMemo";
 import { UseCallback } from "./components/UseCallback/UseCallback";
+import { UseState } from "./components/UseState/UseState";
+import { UseEffectSync } from "./components/UseEffectSync/UseEffectSync";
+import { UseEffectAsync } from "./components/UseEffectAsync/UseEffectAsync";
+import { UseEffectAsyncClock } from "./components/UseEffectAsyncClock/UseEffectAsyncClock";
 
 function App() {
   type PageTitlePropsType = {
@@ -80,6 +84,10 @@ function App() {
       <UseMemo/>
       <UseMemoHelpReactMemo/>
       <UseCallback/>
+      <UseState/>
+      <UseEffectSync/>
+      <UseEffectAsync/>
+      <UseEffectAsyncClock/>
     </div>
   </>
 }

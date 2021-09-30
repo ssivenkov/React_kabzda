@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import s from "./UseCallback.module.css"
 
 const CounterSecret = (props: { count: number }) => {
@@ -18,7 +18,7 @@ const Books = React.memo(BooksSecret);
 export const UseCallback = () => {
   const [counter, setCounter] = useState(0);
   const [books, setBooks] = useState(["React", "Redux", "JS"]);
-  console.log("LikeUseCallback");
+  console.log("UseCallback render");
 
   /* useMemo выполняет функцию useCallback
    const memorizedAddBookFromUseMemo = useMemo(() => {

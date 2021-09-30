@@ -1,15 +1,15 @@
 import React, {useState, KeyboardEvent, useRef} from "react";
 import s from '../CustomSelect/CustomSelect.module.css'
 
-type itemType = {
+type nameType = {
     title: string
-    value: any
+    value: number
 }
 
 type SelectPropsType = {
-    value?: any
+    value?: string
     onChange: (value: any) => void
-    items: itemType[]
+    items: Array<nameType>
 }
 
 export let CustomSelectComponent: React.FC<SelectPropsType> = (
@@ -85,7 +85,7 @@ export let CustomSelectComponent: React.FC<SelectPropsType> = (
 }
 
 type CustomSelectOptionsType = {
-    items: itemType[]
+    items: nameType[]
     changeValue: (value: any) => void
     unCollapsed: boolean
     setUnCollapsed: (collapsed: boolean) => void
