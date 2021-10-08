@@ -1,5 +1,5 @@
-import React, {useState, KeyboardEvent, useRef} from "react";
-import s from '../CustomSelect/CustomSelect.module.css'
+import React, { useState, KeyboardEvent, useRef, MutableRefObject } from "react";
+import s from "../CustomSelect/CustomSelect.module.css"
 
 type nameType = {
     title: string
@@ -7,32 +7,32 @@ type nameType = {
 }
 
 type SelectPropsType = {
-    value?: string
-    onChange: (value: any) => void
+    value: string
+    onChange: (value: string) => void
     items: Array<nameType>
 }
 
-export let CustomSelectComponent: React.FC<SelectPropsType> = (
+export let CustomSelect: React.FC<SelectPropsType> = (
     {
         value,
         onChange,
         items,
-    }
+    },
 ) => {
     const selectRef = useRef(null);
 
     const [unCollapsed, setUnCollapsed] = useState<boolean>(false)
-    const [hoveredItemTitle, setHoveredItemTitle] = useState(value)
+    const [hoveredItemTitle, setHoveredItemTitle] = useState<string>(value)
     const hoveredElement = items.find(i => i.title === hoveredItemTitle)
+    const [itemClicked, setItemClicked] = useState<boolean>(false)
 
     const collapsedAction = () => {
         setUnCollapsed(!unCollapsed)
     }
 
     const onKeyUpCallback = (e: KeyboardEvent<HTMLDivElement>) => {
-        console.log(e.key)
         switch (e.key) {
-            case 'ArrowDown':
+            case "ArrowDown":
                 for (let i = 0; i < items.length; i++) {
                     if (items[i].title === value && items[i + 1]) {
                         setHoveredItemTitle(items[i + 1].title)
@@ -40,7 +40,7 @@ export let CustomSelectComponent: React.FC<SelectPropsType> = (
                     }
                 }
                 break;
-            case 'ArrowUp':
+            case "ArrowUp":
                 for (let i = 0; i < items.length; i++) {
                     if (items[i].title === value && items[i - 1]) {
                         setHoveredItemTitle(items[i - 1].title)
@@ -48,11 +48,11 @@ export let CustomSelectComponent: React.FC<SelectPropsType> = (
                     }
                 }
                 break;
-            case 'Enter':
+            case "Enter":
                 onChange(hoveredItemTitle);
                 collapsedAction();
                 break;
-            case 'Escape':
+            case "Escape":
                 setHoveredItemTitle(value)
                 setUnCollapsed(false);
                 break;
@@ -61,24 +61,32 @@ export let CustomSelectComponent: React.FC<SelectPropsType> = (
         }
     }
 
+    const collapsedCallback = (selectRef: MutableRefObject<any>) => {
+        setHoveredItemTitle(value);
+        setUnCollapsed(false);
+        if (itemClicked) {
+            setItemClicked(false)
+            selectRef.current.focus()
+        } else selectRef.current.blur()
+    }
+
     return (
         <div className={s.container}>
             <div>Custom select</div>
             <div onClick={collapsedAction}
                  className={s.select}
                  onKeyUp={onKeyUpCallback}
+                 onBlur={() => collapsedCallback(selectRef)}
                  tabIndex={0}
                  ref={selectRef}
             >
-                {value ? value : 'none'}
+                {value ? value : "none"}
             </div>
             {unCollapsed && value && <CustomSelectOptions items={items}
                                                           changeValue={onChange}
-                                                          unCollapsed={unCollapsed}
-                                                          setUnCollapsed={setUnCollapsed}
                                                           hoveredElement={hoveredElement}
                                                           setHoveredItemTitle={setHoveredItemTitle}
-                                                          selectRef={selectRef}
+                                                          setItemClicked={setItemClicked}
             />}
         </div>
     )
@@ -86,42 +94,37 @@ export let CustomSelectComponent: React.FC<SelectPropsType> = (
 
 type CustomSelectOptionsType = {
     items: nameType[]
-    changeValue: (value: any) => void
-    unCollapsed: boolean
-    setUnCollapsed: (collapsed: boolean) => void
+    changeValue: (value: string) => void
     hoveredElement: any
     setHoveredItemTitle: (item: string) => void
-    selectRef: any
+    setItemClicked: (itemClicked: boolean) => void
 }
 
 let CustomSelectOptions: React.FC<CustomSelectOptionsType> = (
     {
         items,
         changeValue,
-        unCollapsed,
-        setUnCollapsed,
         hoveredElement,
         setHoveredItemTitle,
-        selectRef
-    }
+        setItemClicked,
+    },
 ) => {
 
     const clickItem = (title: string) => {
         changeValue(title)
-        setUnCollapsed(!unCollapsed)
-        selectRef.current.focus();
+        setItemClicked(true)
     }
 
     return <div className={s.positionContainer}>
         <div className={s.optionContainer}>
             {items.map((item, index) =>
-              <div key={index}
-                   onMouseEnter={() => setHoveredItemTitle(item.title)}
-                   onClick={() => clickItem(item.title)}
-                   className={` ${s.option} ${item === hoveredElement ? s.selected : ""} `}
-              >
-                  {item.title}
-              </div>)
+                <div key={index}
+                     onMouseEnter={() => setHoveredItemTitle(item.title)}
+                     onMouseDown={() => clickItem(item.title)}
+                     className={` ${s.option} ${item === hoveredElement ? s.selected : ""} `}
+                >
+                    {item.title}
+                </div>)
             }
         </div>
     </div>

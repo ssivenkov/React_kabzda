@@ -6,7 +6,7 @@ import { ControlledOnOffComponent } from "./components/ControlledOnOff/Controlle
 import { UncontrolledAccordionComponent } from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import { ControlledRatingComponent, RaitingValueType } from "./components/ControlledRaiting/ControlledRaiting";
 import { UncontrolledRatingComponent } from "./components/UncontrolledRaiting/UncontrolledRaiting";
-import { CustomSelectComponent } from "./components/CustomSelect/CustomSelect";
+import { CustomSelect } from "./components/CustomSelect/CustomSelect";
 import { RefInputComponent } from "./components/RefInput/RefInput";
 import { ControlledInputComponent } from "./components/ControlledInput/ControlledInput";
 import { ControlledCheckboxComponent } from "./components/ControlledCheckbox/ControlledCheckbox";
@@ -42,7 +42,6 @@ function App() {
   const ControlledRating = React.memo(ControlledRatingComponent);
   const UncontrolledRating = React.memo(UncontrolledRatingComponent);
   const ControlledSelect = React.memo(ControlledSelectComponent);
-  const CustomSelect = React.memo(CustomSelectComponent);
   const UncontrolledInput = React.memo(UncontrolledInputComponent);
   const RefInput = React.memo(RefInputComponent);
   const ControlledInput = React.memo(ControlledInputComponent);

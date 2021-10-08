@@ -9,7 +9,7 @@
 .select {
     display: inline-block;
     outline: none;
-    border: 1px solid #000;
+    border: 2px solid #000;
     border-radius: 5px;
     padding: 3px;
     cursor: pointer;
@@ -18,7 +18,7 @@
 }
 
 .select:focus {
-    border: 1px solid #2963b3;
+    border: 2px solid #2963b3;
 }
 
 .select:after {
