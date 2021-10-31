@@ -86,7 +86,8 @@ function App() {
       <UseState/>
       <UseEffectSync/>
       <UseEffectAsync/>
-      <UseEffectAsyncClock/>
+      <UseEffectAsyncClock mode={"digital"}/>
+      <UseEffectAsyncClock mode={"analog"}/>
     </div>
   </>
 }
