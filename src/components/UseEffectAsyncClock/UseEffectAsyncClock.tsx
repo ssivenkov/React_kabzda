@@ -14,11 +14,11 @@ export const UseEffectAsyncClock = (props: UseEffectAsyncClockPropsType) => {
         }, 1000);
 
         return () => {
-            clearInterval(clockID)
+            clearInterval(clockID);
         }
     }, [])
 
-    const get2digitsString = (num: number) => num < 10 ? "0" + num : num
+    const get2digitsString = (num: number) => num < 10 ? "0" + num : num;
 
     let view;
 
@@ -38,7 +38,7 @@ export const UseEffectAsyncClock = (props: UseEffectAsyncClockPropsType) => {
 
 type DigitalClockViewPropsType = {
     get2digitsString: (num: number) => void
-    date: any
+    date: Date
 }
 
 export const AnalogClockView: React.FC<DigitalClockViewPropsType> = ({get2digitsString, date}) => {
@@ -70,7 +70,7 @@ export const DigitalClockView: React.FC<DigitalClockViewPropsType> = ({get2digit
         <div>
             <span>{get2digitsString(date.getHours())}:</span>
             <span>{get2digitsString(date.getMinutes())}:</span>
-            <span>{get2digitsString(date.getSeconds())}!!!!!!!</span>
+            <span>{get2digitsString(date.getSeconds())} </span>
         </div>
     </>
 }
