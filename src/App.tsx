@@ -20,6 +20,8 @@ import { UseState } from "./components/UseState/UseState";
 import { UseEffectSync } from "./components/UseEffectSync/UseEffectSync";
 import { UseEffectAsync } from "./components/UseEffectAsync/UseEffectAsync";
 import { UseEffectAsyncClock } from "./components/UseEffectAsyncClock/UseEffectAsyncClock";
+import { UseEffectCleanup } from "./components/UseEffectCleanup/UseEffectCleanup";
+import { KeysTracker } from "./components/UseEffectKeyTracker/UseEffectKeyTracker";
 
 function App() {
   type PageTitlePropsType = {
@@ -88,6 +90,8 @@ function App() {
       <UseEffectAsync/>
       <UseEffectAsyncClock mode={"digital"}/>
       <UseEffectAsyncClock mode={"analog"}/>
+      <UseEffectCleanup/>
+      <KeysTracker/>
     </div>
   </>
 }

@@ -36,20 +36,20 @@ export const UseEffectAsyncClock = (props: UseEffectAsyncClockPropsType) => {
     </div>
 }
 
-type DigitalClockViewPropsType = {
+type ClockViewPropsType = {
     get2digitsString: (num: number) => void
     date: Date
 }
 
-export const AnalogClockView: React.FC<DigitalClockViewPropsType> = ({get2digitsString, date}) => {
+export const AnalogClockView: React.FC<ClockViewPropsType> = ({get2digitsString, date}) => {
     const secondsStyle = {
-        transform: `rotate(${date.getSeconds() * 6}deg)`
+        transform: `rotate(${date.getSeconds() * 6}deg)`,
     };
     const minutesStyle = {
-        transform: `rotate(${date.getMinutes() * 6}deg)`
+        transform: `rotate(${date.getMinutes() * 6}deg)`,
     };
     const hoursStyle = {
-        transform: `rotate(${date.getHours() * 30}deg)`
+        transform: `rotate(${date.getHours() * 30}deg)`,
     };
 
     return <>
@@ -64,7 +64,7 @@ export const AnalogClockView: React.FC<DigitalClockViewPropsType> = ({get2digits
     </>
 }
 
-export const DigitalClockView: React.FC<DigitalClockViewPropsType> = ({get2digitsString, date}) => {
+export const DigitalClockView: React.FC<ClockViewPropsType> = ({get2digitsString, date}) => {
     return <>
         <span>useEffect async digital clock</span>
         <div>
